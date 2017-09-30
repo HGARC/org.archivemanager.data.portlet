@@ -1,0 +1,16 @@
+<project name="org.archivemanager.data.portlet" basedir="." default="deploy">
+	<property name="deploy.dirs" value="Y:/BUPortal" />
+	<property name="module.version" value="3.0.0" />
+	<property name="dist.dir" value="target" />
+	
+	<import file="../../build-common.xml"/>
+	
+	<target name="deploy" depends="mvn clean package">
+		<for list="${deploy.dirs}" param="dir">
+			<sequential>
+				<copy todir="@{dir}/deploy" file="./target/archivemanager-data-portlet-3.0.0.war" />
+			</sequential>
+		</for>
+	</target>
+	
+</project>
